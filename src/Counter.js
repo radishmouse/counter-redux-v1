@@ -1,5 +1,7 @@
 import React from 'react';
 
+// Counter is a dumb component,
+// working only from props.
 const Counter = (props) => {
   return (
     <div>

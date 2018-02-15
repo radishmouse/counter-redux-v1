@@ -1,6 +1,11 @@
 import { connect } from 'react-redux';
 import CounterList from './CounterList';
 
+// Our "Smart Container" is just a wiring together of:
+// - a function that describes how to translate redux state into the props for the dumb component.
+// - a function that describes how to translate calls to redux dispatch into function props for the dumb component.
+// - the dumb component that will receive those props.
+
 import {
   actionIncrement,
   actionDecrement,
