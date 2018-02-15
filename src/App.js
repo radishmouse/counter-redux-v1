@@ -10,6 +10,8 @@ class App extends Component {
           <button onClick={this.props.decrement}>-</button>
           {this.props.count}
           <button onClick={this.props.increment}>+</button>
+          <br />
+          <button onClick={this.props.remove}>X</button>
         </p>
       </div>
     );
