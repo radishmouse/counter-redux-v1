@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import Counter from './CounterContainer';
 import registerServiceWorker from './registerServiceWorker';
 
-
+import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 
 /*
@@ -22,13 +22,13 @@ My actions will be:
 { type: 'DECREMENT' }
 */
 
-const actionIncrement = () => {
-  return { type: 'INCREMENT' }
-};
+// const actionIncrement = () => {
+//   return { type: 'INCREMENT' }
+// };
 
-const actionDecrement = () => {
-  return { type: 'DECREMENT' }
-};
+// const actionDecrement = () => {
+//   return { type: 'DECREMENT' }
+// };
 
 const initialState = {
   count: 0
@@ -55,28 +55,24 @@ const counter = (state, action) => {
 
 const store = createStore(counter);
 
-store.subscribe( () => {
-  console.log(`The state is now: ${store.getState().count}`);
-  ReactDOM.render(
-    <App
-      count={store.getState().count}
-      increment={() => {
-        store.dispatch(actionIncrement())
-      }}
-      decrement={ () => {
-        store.dispatch(actionDecrement())
-      } }
-    />, document.getElementById('root'));
-})
+// store.subscribe( () => {
+//   console.log(`The state is now: ${store.getState().count}`);
+//   ReactDOM.render(
+//     <Counter
+//       count={store.getState().count}
+//       increment={() => {
+//         store.dispatch(actionIncrement())
+//       }}
+//       decrement={ () => {
+//         store.dispatch(actionDecrement())
+//       } }
+//     />, document.getElementById('root'));
+// })
 
 ReactDOM.render(
-  <App
-    count={store.getState().count}
-    increment={() => {
-      store.dispatch(actionIncrement())
-    }}
-    decrement={ () => {
-      store.dispatch(actionDecrement())
-    } }
-  />, document.getElementById('root'));
+  <Provider store={store}>
+    <Counter />
+  </Provider>
+
+  , document.getElementById('root'));
 registerServiceWorker();
